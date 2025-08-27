@@ -86,17 +86,19 @@ class CatCoordinator {
         }, 1200);
     }
     
-    // Callback hell example - deeply nested callbacks
+    // Callback hell example - deeply nested callbacks (the pyramid of doom)
+    // This is what happens when cats plan their day the old-fashioned way
     coordinateDailyRoutine(catName, callback) {
         console.log(`\\n🏠 Starting daily coordination for ${catName}`);
+        console.log("(Prepare for callback hell - abandon hope, all ye who enter here)\\n");
         
-        // Check weather first
+        // Check weather first (because outdoor plans depend on it)
         this.checkWeather((err, weather) => {
-            if (err) return callback(err);
+            if (err) return callback(err); // Weather service down, panic
             
             console.log("Weather check complete, scheduling feeding...");
             
-            // Then schedule feeding
+            // Then schedule feeding (nested because cat logic)
             this.scheduleFeeding(catName, (err, feeding) => {
                 if (err) return callback(err);
                 
